@@ -6,10 +6,12 @@
 int receivedByte = 0;
 int lastReceivedByte = 0;
 
+void receiveEvent(int number);
+
 void setup()
 {
   Wire.begin(SLAVE_ADDR);
-  Wire.onReceive(receiveHandler);
+  Wire.onReceive(receiveEvent);
   // Wire.onRequest(requestHandler);
   // Wire.send();
   // Wire.write();
@@ -87,7 +89,7 @@ void loop()
 // }
 
 // try not to use serial here
-void receiveHandler()
+void receiveEvent(int number)
 {
   if (Wire.available())
   {
